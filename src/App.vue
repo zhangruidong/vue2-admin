@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <router-view name="menu"></router-view>
+    <div class="rightBox">
+      <router-view name="nav"></router-view>
+      <router-view name="content"></router-view>
+    </div>
   </div>
 </template>
 
@@ -11,13 +14,23 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less">
+  @import "styles/common.less";
+  @import "styles/maxin.less";
+  #app {
+    background-color: #324157;
+    height: 100%;
+    display: flex;
+    .el-menu {
+      min-height: 100%;
+    }
+    .rightBox {
+      width: 200px;
+      min-height: 100%;
+      flex: auto;
+      box-sizing: border-box;
+      height: 600px;
+      background-color: #eef1f6;
+    }
+  }
 </style>
