@@ -2,64 +2,55 @@
   <el-menu
     theme="dark"
     class="el-menu-vertical-demo"
+    :router="true"
+    default-active="/"
     @open="handleOpen"
     @close="handleClose"
+    @select="handleSelect"
     :collapse="isCollapse"
   >
-    <el-menu-item index="1" @click="zoomMenu">
+    <el-menu-item @click="zoomMenu" index="">
       <i class="el-icon-menu"></i>
       <span slot="title" v-if="isCollapse">展开</span>
       <span slot="title" v-else>收缩</span>
     </el-menu-item>
-    <el-menu-item index="2">
+    <el-menu-item index="/" >
       <i class="el-icon-erp-home"></i>
       <span slot="title">首页</span>
     </el-menu-item>
-    <el-submenu index="3">
+    <el-submenu index="table">
       <template slot="title">
-        <i class="el-icon-message"></i>
-        <span slot="title">导航一</span>
+        <i class="el-icon-erp-table"></i>
+        <span slot="title">表格</span>
       </template>
-      <el-menu-item-group>
-        <span slot="title">分组一</span>
-        <el-menu-item index="3-1">选项1</el-menu-item>
-        <el-menu-item index="3-2">选项2</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="分组2">
-        <el-menu-item index="3-3">选项3</el-menu-item>
-      </el-menu-item-group>
-      <el-submenu index="3-4">
-        <span slot="title">选项4</span>
-        <el-menu-item index="3-4-1">选项1</el-menu-item>
-      </el-submenu>
+      <el-menu-item index="table1">查看</el-menu-item>
+      <el-menu-item index="table2">编辑</el-menu-item>
     </el-submenu>
-    <el-menu-item index="4">
-      <i class="el-icon-date"></i>
-      <span slot="title">导航二</span>
+    <el-menu-item index="form">
+      <i class="el-icon-erp-form"></i>
+      <span slot="title">表单</span>
     </el-menu-item>
-    <el-menu-item index="5">
-      <i class="el-icon-setting"></i>
-      <span slot="title">导航三</span>
+    <el-menu-item index="chart">
+      <i class="el-icon-erp-chart"></i>
+      <span slot="title">图表</span>
     </el-menu-item>
-    <el-menu-item index="6">
-      <i class="el-icon-message"></i>
-      <span slot="title">导航三</span>
+    <el-menu-item index="todolist">
+      <i class="el-icon-erp-todo"></i>
+      <span slot="title">todoList</span>
     </el-menu-item>
-    <el-menu-item index="7">
-      <i class="el-icon-upload2"></i>
-      <span slot="title">导航三</span>
+    <el-menu-item index="intro">
+      <i class="el-icon-erp-anonymous-iconfont"></i>
+      <span slot="title">简述</span>
     </el-menu-item>
-    <el-menu-item index="8">
-      <i class="el-icon-more"></i>
-      <span slot="title">导航三</span>
+    <el-menu-item index="test">
+      <i class="el-icon-erp-test"></i>
+      <span slot="title">测试</span>
+    </el-menu-item>
+    <el-menu-item index="about">
+      <i class="el-icon-erp-help"></i>
+      <span slot="title">about me</span>
     </el-menu-item>
   </el-menu>
-  <!--<div class="menu">
-
-    <div class="content">
-
-    </div>
-  </div>-->
 </template>
 
 <script>
@@ -75,6 +66,9 @@
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
+      },
+      handleSelect(key,keyPath){
+        console.log(key,keyPath);
       },
       zoomMenu(){
         this.isCollapse= !this.isCollapse

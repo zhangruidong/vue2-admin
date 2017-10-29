@@ -1,5 +1,8 @@
 <template>
-  <el-table
+  <div>
+    table1
+  </div>
+  <!--<el-table
     :data="tableData"
     border
     style="width: 100%">
@@ -32,7 +35,7 @@
           close-transition>{{scope.row.tag}}</el-tag>
       </template>
     </el-table-column>
-  </el-table>
+  </el-table>-->
 </template>
 
 <script>

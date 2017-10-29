@@ -1,10 +1,14 @@
 <template>
   <div id="app">
     <router-view name="menu"></router-view>
-    <div class="rightBox">
-      <router-view name="nav"></router-view>
-      <router-view name="content"></router-view>
-    </div>
+    <el-container class="rightBox">
+      <el-header>
+        <router-view name="nav"></router-view>
+      </el-header>
+      <el-main>
+        <router-view name="content"></router-view>
+      </el-main>
+    </el-container>
   </div>
 </template>
 

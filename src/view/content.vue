@@ -15,7 +15,6 @@
 
 <style>
   .content {
-    font-size: 60px;
     background-color: gainsboro;
   }
 </style>
