@@ -1,6 +1,8 @@
 <template>
   <el-menu
-    theme="dark"
+    background-color="#545c64"
+    text-color="#fff"
+    active-text-color="#ffd04b"
     class="el-menu-vertical-demo"
     :router="true"
     default-active="/"
@@ -62,13 +64,13 @@
     },
     methods: {
       handleOpen(key, keyPath) {
-        console.log(key, keyPath);
+//        console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
-        console.log(key, keyPath);
+//        console.log(key, keyPath);
       },
       handleSelect(key,keyPath){
-        console.log(key,keyPath);
+//        console.log(key,keyPath);
       },
       zoomMenu(){
         this.isCollapse= !this.isCollapse
@@ -80,19 +82,5 @@
 <style scoped>
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
-    /*min-height: 400px;*/
   }
-  /*.menu {
-    background-color: #324157;
-    display: flex;
-    border: 1px solid blue;
-  }
-  .content {
-    width: 200px;
-    flex: auto;
-    border: 4px solid blue;
-    box-sizing: border-box;
-    height: 600px;
-    background-color: #eef1f6;
-  }*/
 </style>

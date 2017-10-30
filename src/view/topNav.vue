@@ -8,7 +8,7 @@
         </el-breadcrumb>
       </el-col>
       <el-col :span="8" class="rightNav">
-        <div class="full">
+        <div>
           <el-button class="full" @click="fullScreen">
             <i class="icon" :class="{'el-icon-erp-Full':full,'el-icon-erp-fullscreenexit':!full}"></i>
           </el-button>
@@ -19,9 +19,11 @@
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>登陆</el-dropdown-item>
-              <el-dropdown-item >注册</el-dropdown-item>
-              <el-dropdown-item divided>源码</el-dropdown-item>
+              <el-dropdown-item >
+                <router-link to="/">首页</router-link>
+              </el-dropdown-item>
+              <el-dropdown-item >源码</el-dropdown-item>
+              <el-dropdown-item divided>退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -53,7 +55,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   @import "../styles/maxin";
   .nav {
     .el-col {
@@ -61,24 +63,33 @@
     }
     .el-breadcrumb {
       .ft(17px,42px);
-      background-color: #eef1f6;
     }
     .rightNav {
       .ft(17px,42px);
       text-align: right;
-      background-color: #eef1f6;
-      /*background-color: red;*/
       padding-right: 20px;
       .full {
-        height: 42px;
+        height: 32px;
+        width: 32px;
+        text-align: center;
         margin-right: 12px;
+        position: relative;
+        top: -4px;
+        i {
+          position: absolute;
+          left: 50%;
+          top:50%;
+          transform: translate(-50%,-50%);
+        }
       }
       .user {
         display: inline-block;
         width: 42px;
         height: 42px;
-        background: url("../assets/img/avatar.png") no-repeat;
+        transform: translate(0,-2px);
+        background: url("../assets/img/user.jpg") no-repeat;
         background-size: cover;
+        border-radius: 8px;
       }
     }
   }

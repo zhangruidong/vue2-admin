@@ -13,8 +13,7 @@
   }
 </script>
 
-<style>
+<style lang="less">
   .content {
-    background-color: gainsboro;
   }
 </style>

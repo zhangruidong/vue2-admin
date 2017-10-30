@@ -1,5 +1,5 @@
 <template>
-  <div class="chart">
+  <div class="test">
     <el-row>
       <el-col :span="8"><div class="grid-content bg-purple-dark">你好</div></el-col>
       <el-col :span="8"><div class="grid-content bg-purple-dark"><i class="el-icon-erp-todo"></i></div></el-col>
@@ -8,6 +8,8 @@
           <el-button>
             <i class="el-icon-erp-todo"></i>
           </el-button>
+          <el-button type="primary" icon="el-icon-search">搜索</el-button>
+
         </div>
       </el-col>
     </el-row>
@@ -29,7 +31,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   .el-row {
     margin-bottom: 20px;
     &:last-child {
