@@ -23,7 +23,7 @@
                 <router-link to="/">首页</router-link>
               </el-dropdown-item>
               <el-dropdown-item >源码</el-dropdown-item>
-              <el-dropdown-item divided>退出登录</el-dropdown-item>
+              <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+  import {setStore} from '@/utils'
   export default {
     name: 'nav',
     data () {
@@ -48,8 +49,12 @@
     },
     methods: {
       fullScreen(){
-        console.log(1111);
-        this.full=!this.full
+        /*console.log(1111);
+        this.full=!this.full*/
+      },
+      logout(){
+        setStore('isLogin',0);
+        this.$router.replace({path:'/login'})
       }
     }
   }

@@ -26,8 +26,16 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
-
+    created(){
+      axios({
+        type:"get",
+        url:"http://easy-mock.com/mock/59f8573ebe3b4e024abbf19f/test/blog"
+      }).then( res => {
+        console.log(res);
+      })
+    }
   }
 </script>
 

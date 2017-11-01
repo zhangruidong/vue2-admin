@@ -1,14 +1,6 @@
 <template>
   <div id="app" class="fillcontain">
-    <router-view name="menu"></router-view>
-    <el-container class="rightBox">
-      <el-header height="42px">
-        <router-view name="nav" ></router-view>
-      </el-header>
-      <el-main>
-        <router-view name="content"></router-view>
-      </el-main>
-    </el-container>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -25,16 +17,7 @@ export default {
   #app {
     background-color: #324157;
     height: 100%;
-    display: flex;
-    .el-menu {
-      height: 100%;
-    }
-    .rightBox {
-      height: 100%;
-      flex: auto;
-      box-sizing: border-box;
-      background-color: #eef1f6;
-    }
+    width: 100%;
   }
   main {
     padding: 6px !important;
