@@ -45,7 +45,7 @@ let pageRouter = {
         path: 'table2',
         meta:[
           {path:'table2',title:'表格'},
-          {path:'table2',title:'修改'}
+          {path:'table2',title:'编辑'}
         ],
         component: table2
       },
@@ -119,8 +119,8 @@ export default function(store) {
   })
   
   router.beforeEach((to, from, next) => {
-    console.log(store.state.isLogin);
-    console.log(to);
+    // console.log(store.state.isLogin);
+    // console.log(to);
     store.commit('loginHandle')
     if(to.name==="login"){
       next()

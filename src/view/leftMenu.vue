@@ -5,7 +5,7 @@
     active-text-color="#ffd04b"
     class="el-menu-vertical-demo"
     :router="true"
-    default-active="/"
+    :default-active="nowRoute"
     @open="handleOpen"
     @close="handleClose"
     @select="handleSelect"
@@ -60,6 +60,16 @@
     data(){
       return {
         isCollapse:true
+      }
+    },
+    computed: {
+      nowRoute(){
+//        console.log(this.$route.path);
+        if(this.$route.path.length>1){
+          return this.$route.path.slice(1)
+        }else {
+          return this.$route.path
+        }
       }
     },
     methods: {

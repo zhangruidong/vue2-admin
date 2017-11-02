@@ -15,14 +15,14 @@
 
           <el-dropdown>
             <span class="el-dropdown-link">
-              <div class="user">&nbsp;</div>
+              <div class="user" :style="'background-image: url('+logo+')'">&nbsp;</div>
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item >
                 <router-link to="/">首页</router-link>
               </el-dropdown-item>
-              <el-dropdown-item >源码</el-dropdown-item>
+              <el-dropdown-item><a class="link" href="https://github.com/zhangruidong/vue2-admin">源码</a></el-dropdown-item>
               <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -35,11 +35,14 @@
 
 <script>
   import {setStore} from '@/utils'
+  import logo from '@/assets/img/user.jpg'
   export default {
     name: 'nav',
     data () {
       return {
-        full: false
+        full: false,
+        logo,
+        urlLogo:'..'
       }
     },
     computed: {
@@ -49,8 +52,7 @@
     },
     methods: {
       fullScreen(){
-        /*console.log(1111);
-        this.full=!this.full*/
+        this.full=!this.full
       },
       logout(){
         setStore('isLogin',0);
@@ -92,10 +94,15 @@
         width: 42px;
         height: 42px;
         transform: translate(0,-2px);
-        background: url("../assets/img/user.jpg") no-repeat;
+        /*background: url("../assets/img/user.jpg") no-repeat;*/
+        background-repeat: no-repeat;
         background-size: cover;
         border-radius: 8px;
       }
     }
   }
+  a.link {
+    display: block;
+  }
+
 </style>
