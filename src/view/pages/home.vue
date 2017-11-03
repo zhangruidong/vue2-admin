@@ -31,9 +31,9 @@
       }).then( res => {
         console.log(res);
       })*/
-      this.$store.dispatch('getUserList').then( res => {
+      /*this.$store.dispatch('getUserList').then( res => {
         console.log(res);
-      })
+      })*/
     }
   }
 </script>

@@ -34,6 +34,7 @@
     main {
       padding: 6px !important;
       background-color: #fff;
+      position: relative;
     }
   }
 </style>

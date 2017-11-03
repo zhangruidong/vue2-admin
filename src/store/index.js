@@ -5,10 +5,12 @@ import {setStore,getStore,removeStore} from '@/utils'
 
 Vue.use(Vuex);
 
+let userList = JSON.parse(getStore('userList'))
+
 const store = new Vuex.Store({
   
   state: {
-    userList:[],
+    userList,
     isLogin: false
   },
   getters: {
@@ -19,10 +21,26 @@ const store = new Vuex.Store({
   },
   mutations: {
     getUserList(state,payload){
-      state.userList=payload;
+      setStore('userList',payload);
+      state.userList=JSON.parse(getStore('userList'));
     },
     loginHandle(state){
       state.isLogin=getStore('isLogin')
+    },
+    deleteUser(state,deleteId){
+      let list = JSON.parse(getStore('userList'))
+      let newList = list.filter( item => {
+        if(item.id==deleteId){
+          return false
+        }else{
+          return true
+        }
+      })
+      setStore('userList',newList);
+      state.userList=JSON.parse(getStore('userList'));
+    },
+    searchValue(state,value){
+    
     }
   },
   actions: {
