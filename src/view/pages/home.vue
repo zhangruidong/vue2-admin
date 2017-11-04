@@ -1,50 +1,110 @@
 <template>
   <div class="home">
-    <el-row>
-      <el-col :span="24" >
-
-      </el-col>
-    </el-row>
+    <chart :options="polar" ></chart>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
+  import Vue from 'vue'
+  import echarts from 'vue-echarts'
+  Vue.component('chart', echarts)
   export default {
-    data() {
-      return {
-
-      }
-    },
-    methods: {
-      handleEdit(index, row) {
-        console.log(index, row);
-      },
-      handleDelete(index, row) {
-        console.log(index, row);
-      }
-    },
     created(){
-      /*axios({
-        type:'GET',
-        url: 'api/user',
+      axios({
+        type:'get',
+        url: 'http://easy-mock.com/mock/59f7318abcc69e312c494948/admin/visitorTime'
       }).then( res => {
         console.log(res);
-      })*/
-      /*this.$store.dispatch('getUserList').then( res => {
+        this.polar.series[0].data=res.data.data
+      })
+      axios({
+        type:'get',
+        url: 'http://easy-mock.com/mock/59f7318abcc69e312c494948/admin/visitorStar'
+      }).then( res => {
         console.log(res);
-      })*/
+        this.polar.series[1].data=res.data.data
+      })
+    },
+    data() {
+      var xAxisData = [];
+      var data1 = [];
+      var data2 = [];
+      let t = new Date();
+      t.setDate(t.getDate()-100)
+      for (let i = 0; i < 100; i++) {
+        t.setDate(t.getDate()+1)
+        xAxisData.push(add0(t.getMonth()+1)+"-"+add0(t.getDate()));
+      }
+      function add0(num) {
+        if(num<10){
+          return '0'+num
+        }else {
+          return num
+        }
+      }
+      return  {
+        polar: {
+          left: 'center',
+          title: {
+            text: '近百日访问统计'
+          },
+          legend: {
+            data: ['访问数量', '关注数量'],
+            align: 'left'
+          },
+          toolbox: {
+            // y: 'bottom',
+            feature: {
+              magicType: {
+                type: ['stack', 'tiled']
+              },
+              dataView: {},
+              saveAsImage: {
+                pixelRatio: 2
+              }
+            }
+          },
+          tooltip: {},
+          xAxis: {
+            data: xAxisData,
+            silent: false,
+            splitLine: {
+              show: false
+            }
+          },
+          yAxis: {
+          },
+          series: [{
+            name: '访问数量',
+            type: 'bar',
+            data: data1,
+            animationDelay: function (idx) {
+              return idx * 10;
+            }
+          }, {
+            name: '关注数量',
+            type: 'bar',
+            data: data2,
+            animationDelay: function (idx) {
+              return idx * 10 + 100;
+            }
+          }],
+          animationEasing: 'elasticOut',
+          animationDelayUpdate: function (idx) {
+            return idx * 5;
+          }
+        }
+
+      };
     }
   }
 </script>
 
 <style lang="less" scoped>
   .home {
-    width: 100%;
+    width: 300px;
     box-sizing: border-box;
-    .el-table {
-      box-sizing: border-box;
-      width: 100%;
-    }
+    border:1px solid red;
   }
 </style>

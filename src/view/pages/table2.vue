@@ -62,9 +62,51 @@
 
       </el-col>
     </el-row>
-    <div class="changeBox" v-show="changeBox" @scroll.stop>
-      111111
-    </div>
+    <el-dialog :title="'用户信息修改 ID:'+this.form.id" :visible.sync="dialogFormVisible">
+      <el-form :model="form" >
+        <el-form-item label="姓名"
+                      :label-width="formLabelWidth"
+                      prop="name"
+                      :rules="[
+                        { required: true, message: '请输入用户姓名', trigger: 'blur' },
+                        { min: 2, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                      ]"
+        >
+          <el-input v-model="form.name" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱"
+                      :label-width="formLabelWidth"
+                      prop="web.email"
+                      :rules="[
+                        { required: true, message: '请输入邮箱', trigger: 'blur' },
+                        { type: 'email', message: '格式不正确', trigger: 'blur' }
+                      ]"
+        >
+          <el-input v-model="form.web.email" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="户籍" :label-width="formLabelWidth">
+          <el-input v-model="form.address" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="注册日期"
+                      :label-width="formLabelWidth"
+                      required
+                      >
+          <el-date-picker
+            v-model="form.date.date"
+            type="date"
+            placeholder="选择日期"
+            default-value="2010-10-01">
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="简介" :label-width="formLabelWidth">
+          <el-input v-model="form.text.cparagraph" auto-complete="off" type="textarea" ></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="confirmChange">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -86,7 +128,23 @@
     data(){
       return {
 //        userList:[]
-        changeBox:false
+        changeBox:false,
+        dialogFormVisible: false,
+        form: {web:{},text:{},date:{}},
+        formLabelWidth: '120px',
+        /*rules:{
+          name: [
+            { required: true, message: '请输入姓名', trigger: 'blur' },
+            { min: 2, max: 5, message: '长度在 3 到 5 个字符', trigger: 'change' }
+          ],
+          email: [
+            { required: true, message: '请填写邮箱', trigger: 'blur' },
+            { type: 'email', message: '邮箱格式不正确', trigger: 'change' }
+          ],
+          date: [
+            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+          ]
+        }*/
       }
     },
     computed: {
@@ -96,11 +154,18 @@
       handleEdit(index, row) {
 //        console.log(index, row);
 //        this.$store.commit('changeUser',row.id)
-        this.changeBox=true
+//        this.changeBox=true
+        this.form= JSON.parse(JSON.stringify(row))
+        this.dialogFormVisible = true
       },
       handleDelete(index, row) {
 //        console.log(index, row.id);
         this.$store.commit('deleteUser',row.id)
+      },
+      confirmChange(){
+//        console.log(this.form);
+        this.$store.commit('editUser',this.form)
+        this.dialogFormVisible = false
       }
     }
   }

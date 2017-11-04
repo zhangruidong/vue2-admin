@@ -16,6 +16,7 @@
     "less-loader": "^4.0.5",
     "pinyin": "^2.8.3",
     "vue": "^2.5.2",
+    "vue-echarts": "^2.4.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.0"
   },

@@ -27,6 +27,21 @@ const store = new Vuex.Store({
     loginHandle(state){
       state.isLogin=getStore('isLogin')
     },
+    editUser(state,payLoad){
+      console.log(payLoad.name);
+      state.userList.forEach( (item,index) => {
+        if(item.id == payLoad.id){
+          console.log('-----------------');
+          console.log(item);
+          console.log(payLoad);
+          state.userList.splice(index,1,payLoad)
+          console.log('-----------------');
+        }
+      })
+      console.log("aaaa:"+state.userList[0].name);
+      setStore('userList',state.userList);
+      console.log(payLoad);
+    },
     deleteUser(state,deleteId){
       let list = JSON.parse(getStore('userList'))
       let newList = list.filter( item => {
