@@ -65,7 +65,6 @@
 
 <script>
   import {mapGetters} from 'vuex'
-  import pinyin from 'pinyin'
   export default {
     name: 'table1',
     created(){

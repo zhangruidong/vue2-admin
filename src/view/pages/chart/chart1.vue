@@ -1,30 +1,7 @@
 <template>
-  <div class="chart">
-    <el-row :gutter="30">
-      <el-col :span="6">
-        <el-button type="success"></el-button>
-      </el-col>
-      <el-col :span="6">
-        <el-button type="success"></el-button>
-      </el-col>
-      <el-col :span="6">
-        <el-button type="success">111</el-button>
-      </el-col>
-      <el-col :span="6">
-        <el-button type="success">111</el-button>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :md="12">
-        <div><time class="time">{{ new Date()}}</time></div>
-      </el-col>
-      <el-col :md="12">
-        <div>
-          <chart :options="polar" ></chart>
-        </div>
-      </el-col>
-    </el-row>
-  </div>
+    <div>
+      <chart :options="polar" ></chart>
+    </div>
 </template>
 
 <script>

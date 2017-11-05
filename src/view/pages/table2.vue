@@ -115,7 +115,7 @@
   export default {
     name: 'table1',
     created(){
-      if(this.$store.getters.userList.length<1){
+      if(!this.$store.getters.userList || this.$store.getters.userList.length<1){
         this.$store.dispatch('getUserList').then( res => {
 //          console.log(res);
         })
@@ -132,19 +132,6 @@
         dialogFormVisible: false,
         form: {web:{},text:{},date:{}},
         formLabelWidth: '120px',
-        /*rules:{
-          name: [
-            { required: true, message: '请输入姓名', trigger: 'blur' },
-            { min: 2, max: 5, message: '长度在 3 到 5 个字符', trigger: 'change' }
-          ],
-          email: [
-            { required: true, message: '请填写邮箱', trigger: 'blur' },
-            { type: 'email', message: '邮箱格式不正确', trigger: 'change' }
-          ],
-          date: [
-            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
-          ]
-        }*/
       }
     },
     computed: {

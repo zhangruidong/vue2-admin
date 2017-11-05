@@ -15,7 +15,7 @@
 
           <el-dropdown>
             <span class="el-dropdown-link">
-              <div class="user" :style="'background-image: url('+logo+')'">&nbsp;</div>
+              <div class="user">&nbsp;</div>
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
@@ -35,14 +35,14 @@
 
 <script>
   import {setStore} from '@/utils'
-  import logo from '@/assets/img/user.jpg'
+//  import logo from '../../static/user.jpg'
+//  :style="{backgroundImage:'url('+logo+')'}"
   export default {
     name: 'nav',
     data () {
       return {
-        full: false,
         logo,
-        urlLogo:'..'
+        full: false
       }
     },
     computed: {
@@ -126,8 +126,8 @@
         width: 42px;
         height: 42px;
         transform: translate(0,-2px);
-        /*background: url("../assets/img/user.jpg") no-repeat;*/
-        background-repeat: no-repeat;
+        background: url("http://ico.ooopic.com/ajax/iconpng/?id=69388.png") no-repeat;
+        /*background-repeat: no-repeat;*/
         background-size: cover;
         border-radius: 8px;
       }

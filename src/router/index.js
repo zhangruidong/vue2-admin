@@ -13,11 +13,16 @@ import home from '@/view/pages/home'
 import table1 from '@/view/pages/table1'
 import table2 from '@/view/pages/table2'
 import form from '@/view/pages/form'
-import chart from '@/view/pages/chart'
 import todolist from '@/view/pages/todolist'
 import intro from '@/view/pages/intro'
 import test from '@/view/pages/test'
 import about from '@/view/pages/about'
+
+import chart from '@/view/pages/chart'
+import chart1 from '@/view/pages/chart/chart1'
+import chart2 from '@/view/pages/chart/chart2'
+import chart3 from '@/view/pages/chart/chart3'
+import chart4 from '@/view/pages/chart/chart4'
 
 Vue.use(Router)
 
@@ -31,6 +36,7 @@ let pageRouter = {
       {
         path:'',
         meta:[],
+        redirect: '/table2',
         component: home
       },
       {
@@ -58,10 +64,16 @@ let pageRouter = {
       },
       {
         path: 'chart',
-        meta:[
-          {path:'chart',title:'图表'}
-        ],
-        component: chart
+        component: chart,
+        children:[
+          {
+            path:'',
+            meta:[
+              {path:'chart',title:'图表'}
+            ],
+            components:{chart1,chart2,chart3,chart4}
+          }
+        ]
       },
       {
         path: 'todolist',
